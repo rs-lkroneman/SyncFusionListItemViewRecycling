@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncFusionListItemViewRecycling", "SyncFusionListItemViewRecycling\SyncFusionListItemViewRecycling.csproj", "{3298C815-440D-4EDE-8297-0B991AEE5F27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppiumTest", "AppiumTest\AppiumTest.csproj", "{22A6B2EC-8886-4CDA-8050-62661CB5F4BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3298C815-440D-4EDE-8297-0B991AEE5F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3298C815-440D-4EDE-8297-0B991AEE5F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3298C815-440D-4EDE-8297-0B991AEE5F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3298C815-440D-4EDE-8297-0B991AEE5F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22A6B2EC-8886-4CDA-8050-62661CB5F4BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22A6B2EC-8886-4CDA-8050-62661CB5F4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22A6B2EC-8886-4CDA-8050-62661CB5F4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22A6B2EC-8886-4CDA-8050-62661CB5F4BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
