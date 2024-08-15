@@ -38,6 +38,10 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <SyncFusionVersion>25.2.4</SyncFusionVersion>
+    </PropertyGroup>
+
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4"/>
@@ -61,5 +65,17 @@
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Syncfusion.Maui.Buttons" Version="$(SyncFusionVersion)" />
+        <PackageReference Include="Syncfusion.Maui.Calendar" Version="$(SyncFusionVersion)" />
+        <PackageReference Include="Syncfusion.Maui.ListView" Version="$(SyncFusionVersion)-patched" />
+        <PackageReference Include="Syncfusion.Maui.Core" Version="$(SyncFusionVersion)" />
+        <PackageReference Include="Syncfusion.Maui.DataSource" Version="$(SyncFusionVersion)" />
+        <PackageReference Include="Syncfusion.Maui.ProgressBar" Version="$(SyncFusionVersion)" />
+        <PackageReference Include="Syncfusion.Maui.Inputs" Version="$(SyncFusionVersion)-patched1" />
+        <PackageReference Include="Syncfusion.Maui.Charts" Version="$(SyncFusionVersion)" />
+    </ItemGroup>
+
 
 </Project>

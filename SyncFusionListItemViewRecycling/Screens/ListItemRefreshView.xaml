@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="SyncFusionListItemViewRecycling.Screens.ListItemRefreshView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:screens="clr-namespace:SyncFusionListItemViewRecycling.Screens"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView">
+    <RefreshView x:DataType="screens:BookInfoRepository">
+        <syncfusion:SfListView x:Name="listView" ItemsSource="{Binding BookInfo}">
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate x:DataType="screens:BookInfo">
+
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*" />
+                            <RowDefinition Height="0.6*" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="21"
+                            Text="{Binding BookName}"
+                            TextColor="Teal" />
+                        <Label
+                            Grid.Row="1"
+                            FontSize="15"
+                            Text="{Binding BookDescription}"
+                            TextColor="Teal" />
+                    </Grid>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+    </RefreshView>
+</ContentPage>
