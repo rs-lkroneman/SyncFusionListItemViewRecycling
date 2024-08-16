@@ -1,37 +1,18 @@
 using System.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace SyncFusionListItemViewRecycling.Screens;
 
-public class BookInfo : INotifyPropertyChanged
+public partial class BookInfo : ObservableObject
 {
-    private string bookName;
-    private string bookDesc;
+    public string Name { get; init; } = null!;
 
-    public string BookName
+    [ObservableProperty] private int count;
+    
+    [RelayCommand]
+    private void DropItem()
     {
-        get { return bookName; }
-        set
-        {
-            bookName = value;
-            OnPropertyChanged("BookName");
-        }
-    }
-
-    public string BookDescription
-    {
-        get { return bookDesc; }
-        set
-        {
-            bookDesc = value;
-            OnPropertyChanged("BookDescription");
-        }
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    public void OnPropertyChanged(string name)
-    {
-        if (this.PropertyChanged != null)
-            this.PropertyChanged(this, new PropertyChangedEventArgs(name));
+        Count++;
     }
 }

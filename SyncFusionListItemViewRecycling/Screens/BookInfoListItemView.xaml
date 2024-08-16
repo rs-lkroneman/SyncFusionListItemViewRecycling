@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentView
+    x:Class="SyncFusionListItemViewRecycling.Screens.BookInfoListItemView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <VerticalStackLayout x:Name="BookListItem" HeightRequest="100">
+        <Grid Padding="10" HeightRequest="98">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*" />
+                <RowDefinition Height="0.6*" />
+            </Grid.RowDefinitions>
+            <HorizontalStackLayout>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="{Binding Name}"
+                    TextColor="Teal" />
+
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Row="1">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Count: "
+                    TextColor="Teal" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="{Binding Count}"
+                    TextColor="Teal" />
+            </HorizontalStackLayout>
+
+        </Grid>
+        <BoxView
+            x:Name="bottomBorder"
+            HeightRequest="2"
+            BackgroundColor="Black" />
+        <VerticalStackLayout.GestureRecognizers>
+            <DropGestureRecognizer
+                AllowDrop="True"
+                DragLeave="DragLeaveItem"
+                DragOver="DragOverItem"
+                DropCommand="{Binding DropItemCommand}" />
+        </VerticalStackLayout.GestureRecognizers>
+    </VerticalStackLayout>
+</ContentView>

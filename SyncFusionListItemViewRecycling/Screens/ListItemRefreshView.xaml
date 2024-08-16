@@ -5,30 +5,73 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:screens="clr-namespace:SyncFusionListItemViewRecycling.Screens"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView">
-    <RefreshView x:DataType="screens:BookInfoRepository">
-        <syncfusion:SfListView x:Name="listView" ItemsSource="{Binding BookInfo}">
-            <syncfusion:SfListView.ItemTemplate>
-                <DataTemplate x:DataType="screens:BookInfo">
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+    x:Name="listView">
+    <ContentPage.Resources>
+        <screens:BookInfoTemplateSelector x:Key="BookInfoTemplateSelector" />
+    </ContentPage.Resources>
+    <RefreshView
+        x:DataType="screens:BookInfoRepository"
+        Command="{Binding RefreshCommand, Source={x:Reference listView}}"
+        IsRefreshing="{Binding IsRefreshing, Source={x:Reference listView}}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="100" />
+            </Grid.RowDefinitions>
+            <syncfusion:SfListView
+                x:Name="listViewList"
+                Grid.Row="0"
+                AllowSwiping="True"
+                AutoFitMode="DynamicHeight"
+                CachingStrategy="RecycleTemplate"
+                IsStickyHeader="True"
+                ItemSize="100"
+                ItemTemplate="{StaticResource BookInfoTemplateSelector}"
+                ItemsSource="{Binding BookInfo}"
+                ScrollBarVisibility="Never"
+                SelectionMode="None"
+                SwipeOffset="120"
+                SwipeThreshold="30">
+                <syncfusion:SfListView.EndSwipeTemplate>
+                    <DataTemplate x:Name="RightSwipeTemplate">
+                        <Grid
+                            BackgroundColor="#DC595F"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill">
+                            <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    WidthRequest="35"
+                                    HeightRequest="35"
+                                    BackgroundColor="Transparent"
+                                    Source="delete.png" />
+                            </Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DeleteItemCommand, Source={x:Reference listView}}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </syncfusion:SfListView.EndSwipeTemplate>
+            </syncfusion:SfListView>
 
-                    <Grid Padding="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0.4*" />
-                            <RowDefinition Height="0.6*" />
-                        </Grid.RowDefinitions>
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="21"
-                            Text="{Binding BookName}"
-                            TextColor="Teal" />
-                        <Label
-                            Grid.Row="1"
-                            FontSize="15"
-                            Text="{Binding BookDescription}"
-                            TextColor="Teal" />
-                    </Grid>
-                </DataTemplate>
-            </syncfusion:SfListView.ItemTemplate>
-        </syncfusion:SfListView>
+            <VerticalStackLayout
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <VerticalStackLayout Padding="12" BackgroundColor="Aqua">
+                    <Label x:Name="dragLabel" Text="Drag Me" />
+
+                    <VerticalStackLayout.GestureRecognizers>
+                        <DragGestureRecognizer
+                            CanDrag="True"
+                            DragStarting="OnDragStarting"
+                            DropCompleted="OnDropCompleted" />
+                    </VerticalStackLayout.GestureRecognizers>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
     </RefreshView>
 </ContentPage>
